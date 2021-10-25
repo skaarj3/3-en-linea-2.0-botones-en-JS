@@ -66,6 +66,7 @@ h1>i.fa-gamepad {
 }
 
 #reinicio {
+    visibility: hidden;
     display: grid;
     margin: auto;
     width: 200px;

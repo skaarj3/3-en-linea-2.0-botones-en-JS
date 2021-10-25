@@ -25,6 +25,7 @@ document.getElementById("pve").onclick = function() {
 
 function cargarPartida() {
     document.getElementById("cuadro").style.visibility = "visible";
+    document.getElementById("reinicio").style.visibility = "visible";
     document.getElementById("tipoJuego").style.visibility = "hidden";
     document.getElementById("facilDificil").style.visibility = "hidden";
 } //Esta función muestra el cuadro de juego
