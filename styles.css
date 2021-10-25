@@ -1,0 +1,95 @@
+body {
+    background-color: white;
+    color: black;
+    font-family: 'Open Sans';
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+}
+
+h1>i.fa-gamepad {
+    /*El estilo del icono del título*/
+    font-size: 40px;
+    color: red;
+}
+
+#tipoJuego {
+    visibility: visible;
+    width: 900px;
+    height: 60px;
+    margin: auto;
+    /*esto centra el cuadro*/
+}
+
+#pvp {
+    width: 200px;
+    height: 50px;
+    float: left;
+}
+
+#pve {
+    width: 200px;
+    height: 50px;
+    float: right;
+}
+
+#facilDificil {
+    visibility: hidden;
+    width: 500px;
+    height: 60px;
+    float: right;
+}
+
+#botonPveFacil,
+#botonPveDificil {
+    width: 200px;
+    height: 50px;
+}
+
+#cuadro {
+    visibility: hidden;
+    display: grid;
+    margin: auto;
+    width: 450px;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#cuadro>#botonJugable {
+    width: 150px;
+    height: 150px;
+    max-width: 33.33%;
+    font-size: 8em;
+}
+
+#reinicio {
+    display: grid;
+    margin: auto;
+    width: 200px;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#reinicio>button {
+    width: 200px;
+    height: 40px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 25px;
+}
+
+h2>i.fa-trophy {
+    font-size: 25px;
+    color: black;
+}
+
+#vencedor {
+    visibility: hidden;
+    color: red;
+}
