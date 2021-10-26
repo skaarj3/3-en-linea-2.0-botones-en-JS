@@ -5,7 +5,7 @@ let partidaAcabada = false;
 let textoVictoria =
     document.getElementById("textoVictoria");
 let botones =
-    Array.from(document.getElementsByTagName("button"));
+    Array.from(document.getElementsByName("botonJugable"));
 
 botones.forEach(
     x => x.addEventListener("click", ponerFicha)
