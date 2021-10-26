@@ -58,7 +58,7 @@ h1>i.fa-gamepad {
     flex-wrap: wrap;
 }
 
-#cuadro>#botonJugable {
+#cuadro>button {
     width: 150px;
     height: 150px;
     max-width: 33.33%;

@@ -23,7 +23,9 @@ document.getElementById("pve").onclick = function() {
     mostrarBotonesPve();
 }
 
+var cuadro = document.querySelector("#cuadro");
 function cargarPartida() {
+    //cuadro.setAttribute("visibility", "visible"); //Esto de momento no funciona
     document.getElementById("cuadro").style.visibility = "visible";
     document.getElementById("reinicio").style.visibility = "visible";
     document.getElementById("tipoJuego").style.visibility = "hidden";
@@ -40,23 +42,33 @@ function asignarModoJuego() {
 
 /*En función del botón que pulsemos, se cargará siempre la pantalla partida.html y la variable
 modoJuego tendrá un valor distinto*/
-document.getElementById("pvp").onclick = function() {
+document.querySelector("#pvp").addEventListener("click", function() {
     cargarPartida();
     asignarModoJuego();
     document.getElementById("textoModoJuego").innerHTML = "Jugador contra Jugador";
-}
+});
 
-document.getElementById("botonPveFacil").onclick = function() {
+document.querySelector("#botonPveFacil").addEventListener("click", function(){
     cargarPartida();
     asignarModoJuego();
     document.getElementById("textoModoJuego").innerHTML = "Jugador contra la máquina. Modo fácil";
-}
+});
 
-document.getElementById("botonPveDificil").onclick = function() {
+document.querySelector("#botonPveDificil").addEventListener("click", function(){
     cargarPartida();
     asignarModoJuego();
     document.getElementById("textoModoJuego").innerHTML = "Jugador contra la máquina. Modo difícil";
+});
+
+function reiniciar() {
+    window.location.reload();
 }
+
+document.querySelector("#reiniciar").addEventListener("click", function(){
+    reiniciar();
+});
+
+
 
 function ponerFicha(event) {
     let botonPulsado = event.target;
