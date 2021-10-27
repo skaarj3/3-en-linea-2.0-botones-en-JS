@@ -17,10 +17,10 @@ let modoJuego;
 /*Para mostrar los modos de juego de pve en la pantalla inicial, al pulsar el botón pve*/
 function mostrarBotonesPve() {
     var x = document.getElementById("facilDificil");
-    if (x.style.display === "none") {
-        x.style.display = "block";
+    if (x.style.visibility === "visible") {
+        x.style.visibility = "hidden";
     } else {
-        x.style.display = "none";
+        x.style.visibility = "visible";
     }
     //document.getElementById("facilDificil").style.visibility = "visible";
 }
