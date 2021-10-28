@@ -17,21 +17,17 @@ h1>i.fa-gamepad {
 
 #tipoJuego {
     visibility: visible;
-    width: 900px;
-    height: 60px;
-    margin: auto;
-    /*esto centra el cuadro*/
 }
 
 #pvp {
-    width: 200px;
-    height: 50px;
+    width: 150px;
+    height: 40px;
     float: left;
 }
 
 #pve {
-    width: 200px;
-    height: 50px;
+    width: 150px;
+    height: 40px;
     float: right;
 }
 
@@ -44,21 +40,24 @@ h1>i.fa-gamepad {
 
 #botonPveFacil,
 #botonPveDificil {
-    width: 200px;
-    height: 50px;
+    width: 150px;
+    height: 40px;
+    float: right;
 }
 
-#progress {
-    visibility: hidden;
-}
+/* #progress {
+    /* visibility: hidden;
+} */
 
-.inicio{
+.inicio {
     width: 0%;
 }
-.final{
+
+.final {
     width: 100%;
 }
-.animacion{
+
+.animacion {
     transition: all 2s ease .5s;
 }
 

@@ -22,7 +22,6 @@ function mostrarBotonesPve() {
     } else {
         x.style.visibility = "visible";
     }
-    //document.getElementById("facilDificil").style.visibility = "visible";
 }
 
 document.getElementById("pve").onclick = function () {
@@ -33,7 +32,6 @@ var cuadro = document.querySelector("#cuadro");
 
 function cargarPartida() {
     //cuadro.setAttribute("visibility", "visible"); //Esto de momento no funciona
-
     document.getElementById("cuadro").style.visibility = "visible";
     document.getElementById("reinicio").style.visibility = "visible";
     document.getElementById("tipoJuego").style.visibility = "hidden";
@@ -50,45 +48,45 @@ function asignarModoJuego() {
     }
 }
 
-function animar() {
-    document.getElementById("progress").style.visibility = "visible";
-    document.getElementById("barra").classList.toggle("final");
-    setTimeout(function () {
-        document.getElementById("progress").style.visibility = "hidden";
-    }, 1000);
-}
-
+// function animar() {
+//     //document.getElementById("progress").style.visibility = "visible";
+//     document.getElementById("barra").classList.toggle("final");
+//     setTimeout(function () {
+//         document.getElementById("progress").style.visibility = "hidden";
+//     }, 2000);
+// }
 
 /*En función del botón que pulsemos, se cargará siempre la barra de progreso, luego desaparece, carga el cuadro de juego y la variable modoJuego tendrá un valor distinto*/
 document.querySelector("#pvp").addEventListener("click", function () {
-    animar();
+    //animar();
     setTimeout(function () {
         cargarPartida();
     }, 1000);
     asignarModoJuego();
-    document.getElementById("textoModoJuego").innerHTML = "Jugador contra Jugador";
+    document.getElementById("textoModoJuego").innerHTML = 'Jugador contra Jugador <i class="fas fa-people-arrows"></i>';
 });
 
 document.querySelector("#botonPveFacil").addEventListener("click", function () {
-    animar();
+    //animar();
     setTimeout(function () {
         cargarPartida();
-    }, 300);
+    }, 1000);
     asignarModoJuego();
-    document.getElementById("textoModoJuego").innerHTML = "Jugador contra la máquina. Modo fácil";
+    document.getElementById("textoModoJuego").innerHTML = 'Jugador contra la máquina. Modo fácil <i class="fas fa-shapes"></i>';
 });
 
 document.querySelector("#botonPveDificil").addEventListener("click", function () {
-    animar();
+    //animar();
     setTimeout(function () {
         cargarPartida();
-    }, 300);
+    }, 1000);
     asignarModoJuego();
-    document.getElementById("textoModoJuego").innerHTML = "Jugador contra la máquina. Modo difícil";
+    document.getElementById("textoModoJuego").innerHTML = 'Jugador contra la máquina. Modo difícil <i class="fas fa-fire-alt"></i>';
 });
 
 function reiniciar() {
     window.location.reload();
+    window.scrollTo(0, 0);//recarga la página y hace scroll a la parte de arriba
 }
 
 document.querySelector("#reiniciar").addEventListener("click", function () {
