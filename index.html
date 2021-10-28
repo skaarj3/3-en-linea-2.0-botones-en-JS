@@ -11,6 +11,14 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <!--     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script> -->
+    <link rel="stylesheet" type="text/css" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     <script src="oponente.js" async></script>
 </head>
 
@@ -23,18 +31,16 @@
         <br>
         <br>
         <div id="facilDificil">
-            <button id="botonPveFacil">Modo fácil</button>
-            <button id="botonPveDificil">Modo difícil</button>
+            <button id="botonPveFacil">Modo fácil <i class="fas fa-shapes"></i></button>
+            <button id="botonPveDificil">Modo difícil <i class="fas fa-fire-alt"></i></button>
         </div>
     </div>
     </br>
     </br>
-    <div class="py-4">
-        <div class="progress">
-            <div id="barra" class="progress-bar progress-bar-striped" role="progressbar" aria-baluenow="75"
-                aria-valuemin="0" aria-valuemax="100">
-            </div>
-        </div>
+    <!-- Esta mierda de barra no carga de ninguna manera -->
+    <div class="progress w-75" id="progress">
+        <div id="barra" class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="75"
+            aria-valuemin="0" aria-valuemax="100" style="width: 75%">Aqui debería aparecer la puta barra</div>
     </div>
     </br>
     <div id="cuadro">
@@ -53,20 +59,6 @@
         <button id="reiniciar">Reiniciar</button>
     </div>
     <h2 id="vencedor"><i class="fas fa-trophy"></i> ¡Felicidades, has ganado! <i class="fas fa-trophy"></i></h2>
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
-
 </body>
 </body>
 

@@ -45,9 +45,9 @@ h1>i.fa-gamepad {
     float: right;
 }
 
-/* #progress {
-    /* visibility: hidden;
-} */
+#progress {
+    visibility: hidden;
+}
 
 .inicio {
     width: 0%;

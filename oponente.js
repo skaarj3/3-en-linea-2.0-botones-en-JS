@@ -7,9 +7,6 @@ let textoVictoria =
 let botones =
     Array.from(document.getElementsByName("botonJugable"));
 
-botones.forEach(
-    x => x.addEventListener("click", ponerFicha)
-);
 
 let modoJuego;
 /*Iniciamos variable. Si el modo es 0, es pvp, si es 1 es pve fácil y si es 2 es pve difícil*/
@@ -28,6 +25,10 @@ document.getElementById("pve").onclick = function () {
     mostrarBotonesPve();
 }
 
+botones.forEach(
+    x => x.addEventListener("click", ponerFicha)
+);
+
 var cuadro = document.querySelector("#cuadro");
 
 function cargarPartida() {
@@ -36,7 +37,7 @@ function cargarPartida() {
     document.getElementById("reinicio").style.visibility = "visible";
     document.getElementById("tipoJuego").style.visibility = "hidden";
     document.getElementById("facilDificil").style.visibility = "hidden";
-} //Esta función muestra el cuadro de juego
+} //Esta función muestra el cuadro de juego y oculta los botones superiores
 
 function asignarModoJuego() {
     if (document.getElementById("pvp").onclick) {
@@ -48,17 +49,17 @@ function asignarModoJuego() {
     }
 }
 
-// function animar() {
-//     //document.getElementById("progress").style.visibility = "visible";
-//     document.getElementById("barra").classList.toggle("final");
-//     setTimeout(function () {
-//         document.getElementById("progress").style.visibility = "hidden";
-//     }, 2000);
-// }
+function animar() {
+    document.getElementById("progress").style.visibility = "visible";
+    document.getElementById("barra").classList.toggle("final");
+    setTimeout(function () {
+        document.getElementById("progress").style.visibility = "hidden";
+    }, 1000);
+}
 
 /*En función del botón que pulsemos, se cargará siempre la barra de progreso, luego desaparece, carga el cuadro de juego y la variable modoJuego tendrá un valor distinto*/
 document.querySelector("#pvp").addEventListener("click", function () {
-    //animar();
+    animar();
     setTimeout(function () {
         cargarPartida();
     }, 1000);
@@ -67,7 +68,7 @@ document.querySelector("#pvp").addEventListener("click", function () {
 });
 
 document.querySelector("#botonPveFacil").addEventListener("click", function () {
-    //animar();
+    animar();
     setTimeout(function () {
         cargarPartida();
     }, 1000);
@@ -76,7 +77,7 @@ document.querySelector("#botonPveFacil").addEventListener("click", function () {
 });
 
 document.querySelector("#botonPveDificil").addEventListener("click", function () {
-    //animar();
+    animar();
     setTimeout(function () {
         cargarPartida();
     }, 1000);
@@ -86,7 +87,7 @@ document.querySelector("#botonPveDificil").addEventListener("click", function ()
 
 function reiniciar() {
     window.location.reload();
-    window.scrollTo(0, 0);//recarga la página y hace scroll a la parte de arriba
+    window.scrollTo(0, 0); //recarga la página y hace scroll a la parte de arriba
 }
 
 document.querySelector("#reiniciar").addEventListener("click", function () {
