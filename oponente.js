@@ -55,7 +55,7 @@ function animar() {
     document.getElementById("barra").classList.toggle("final");
     setTimeout(function () {
         document.getElementById("progress").style.visibility = "hidden";
-    }, 2000);
+    }, 1000);
 }
 
 
@@ -64,7 +64,7 @@ document.querySelector("#pvp").addEventListener("click", function () {
     animar();
     setTimeout(function () {
         cargarPartida();
-    }, 2000);
+    }, 1000);
     asignarModoJuego();
     document.getElementById("textoModoJuego").innerHTML = "Jugador contra Jugador";
 });
