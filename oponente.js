@@ -25,13 +25,15 @@ function mostrarBotonesPve() {
     //document.getElementById("facilDificil").style.visibility = "visible";
 }
 
-document.getElementById("pve").onclick = function() {
+document.getElementById("pve").onclick = function () {
     mostrarBotonesPve();
 }
 
 var cuadro = document.querySelector("#cuadro");
+
 function cargarPartida() {
     //cuadro.setAttribute("visibility", "visible"); //Esto de momento no funciona
+
     document.getElementById("cuadro").style.visibility = "visible";
     document.getElementById("reinicio").style.visibility = "visible";
     document.getElementById("tipoJuego").style.visibility = "hidden";
@@ -43,25 +45,44 @@ function asignarModoJuego() {
         modoJuego = 0;
     } else if (document.getElementById("botonPveFacil").onclick) {
         modoJuego = 1;
-    } else if (document.getElementById("botonPveDificil").onclick) { modoJuego = 2; }
+    } else if (document.getElementById("botonPveDificil").onclick) {
+        modoJuego = 2;
+    }
 }
 
-/*En función del botón que pulsemos, se cargará siempre la pantalla partida.html y la variable
-modoJuego tendrá un valor distinto*/
-document.querySelector("#pvp").addEventListener("click", function() {
-    cargarPartida();
+function animar() {
+    document.getElementById("progress").style.visibility = "visible";
+    document.getElementById("barra").classList.toggle("final");
+    setTimeout(function () {
+        document.getElementById("progress").style.visibility = "hidden";
+    }, 2000);
+}
+
+
+/*En función del botón que pulsemos, se cargará siempre la barra de progreso, luego desaparece, carga el cuadro de juego y la variable modoJuego tendrá un valor distinto*/
+document.querySelector("#pvp").addEventListener("click", function () {
+    animar();
+    setTimeout(function () {
+        cargarPartida();
+    }, 2000);
     asignarModoJuego();
     document.getElementById("textoModoJuego").innerHTML = "Jugador contra Jugador";
 });
 
-document.querySelector("#botonPveFacil").addEventListener("click", function(){
-    cargarPartida();
+document.querySelector("#botonPveFacil").addEventListener("click", function () {
+    animar();
+    setTimeout(function () {
+        cargarPartida();
+    }, 300);
     asignarModoJuego();
     document.getElementById("textoModoJuego").innerHTML = "Jugador contra la máquina. Modo fácil";
 });
 
-document.querySelector("#botonPveDificil").addEventListener("click", function(){
-    cargarPartida();
+document.querySelector("#botonPveDificil").addEventListener("click", function () {
+    animar();
+    setTimeout(function () {
+        cargarPartida();
+    }, 300);
     asignarModoJuego();
     document.getElementById("textoModoJuego").innerHTML = "Jugador contra la máquina. Modo difícil";
 });
@@ -70,7 +91,7 @@ function reiniciar() {
     window.location.reload();
 }
 
-document.querySelector("#reiniciar").addEventListener("click", function(){
+document.querySelector("#reiniciar").addEventListener("click", function () {
     reiniciar();
 });
 
@@ -84,9 +105,11 @@ function ponerFicha(event) {
         puestas += 1; /*Cuando pulsamos un botón el contador de "puestas" sube 1*/
 
         let estadoPartida = estado(); /*0 si nadie ha ganado, 1 si gana el jugador, -1 si gana la máquina*/
-        if (estadoPartida == 0) { /*Si nadie ha ganado...*/
+        if (estadoPartida == 0) {
+            /*Si nadie ha ganado...*/
             cambiarTurno();
-            if (puestas < 9) { /*Si no se ha llenado el tablero*/
+            if (puestas < 9) {
+                /*Si no se ha llenado el tablero*/
                 iaFacil(); /*Llamamos a la función de que la ia(máquina) mueva*/
                 /*OJO AQUÍ ELEGIREMOS iaFacil O iaDificil EN FUNCIÓN DEL MODO QUE ELIJAMOS
                 AL PRINCIPIO*/
