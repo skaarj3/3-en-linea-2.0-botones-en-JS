@@ -48,6 +48,20 @@ h1>i.fa-gamepad {
     height: 50px;
 }
 
+#progress {
+    visibility: hidden;
+}
+
+.inicio{
+    width: 0%;
+}
+.final{
+    width: 100%;
+}
+.animacion{
+    transition: all 2s ease .5s;
+}
+
 #cuadro {
     visibility: hidden;
     display: grid;
