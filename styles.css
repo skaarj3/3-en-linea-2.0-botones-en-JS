@@ -22,13 +22,13 @@ h1>i.fa-gamepad {
 }
 
 #pvp {
-    width: 150px;
+    width: 200px;
     height: 40px;
     float: left;
 }
 
 #pve {
-    width: 150px;
+    width: 200px;
     height: 40px;
     float: right;
 }
@@ -42,7 +42,7 @@ h1>i.fa-gamepad {
 
 #botonPveFacil,
 #botonPveDificil {
-    width: 150px;
+    width: 200px;
     height: 40px;
     float: right;
 }
@@ -79,7 +79,7 @@ h1>i.fa-gamepad {
     width: 150px;
     height: 150px;
     max-width: 33.33%;
-    font-size: 8em;
+    font-size: 6em;
 }
 
 #reinicio {
