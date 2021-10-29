@@ -2,13 +2,10 @@ let turno = 1;
 let fichas = ["O", "X"];
 let puestas = 0;
 let partidaAcabada = false;
-let textoVictoria =
-    document.getElementById("textoVictoria");
+let textoVictoria = document.getElementById("vencedor");
 let botones =
     Array.from(document.getElementsByName("botonJugable"));
-
-
-let modoJuego;
+var modoDeJuego = 2;
 /*Iniciamos variable. Si el modo es 0, es pvp, si es 1 es pve fácil y si es 2 es pve difícil*/
 
 /*Para mostrar los modos de juego de pve en la pantalla inicial, al pulsar el botón pve*/
@@ -39,6 +36,7 @@ function cargarPartida() {
     document.getElementById("facilDificil").style.visibility = "hidden";
 } //Esta función muestra el cuadro de juego y oculta los botones superiores
 
+//Muestra la barra de carga, la anima y luego la oculta
 function animar() {
     document.getElementById("progress").style.visibility = "visible";
     document.getElementById("barra").classList.toggle("final");
@@ -49,42 +47,42 @@ function animar() {
 
 /*En función del botón que pulsemos, se cargará siempre la barra de progreso, luego desaparece, carga el cuadro de juego y la variable modoJuego tendrá un valor distinto*/
 document.querySelector("#pvp").addEventListener("click", function () {
+    modoDeJuego = 0;
     animar();
     setTimeout(function () {
         cargarPartida();
     }, 1000);
-    modoJuego = 0;
     document.getElementById("textoModoJuego").innerHTML = 'Jugador contra Jugador <i class="fas fa-people-arrows"></i>';
+    //document.getElementById("modoJuego").innerHTML = modoDeJuego;
 });
 
 document.querySelector("#botonPveFacil").addEventListener("click", function () {
+    modoDeJuego = 1;
     animar();
     setTimeout(function () {
         cargarPartida();
     }, 1000);
-    modoJuego = 1;
     document.getElementById("textoModoJuego").innerHTML = 'Jugador contra la máquina. Modo fácil <i class="fas fa-shapes"></i>';
+    //document.getElementById("modoJuego").innerHTML = modoDeJuego;
 });
 
 document.querySelector("#botonPveDificil").addEventListener("click", function () {
+    modoDeJuego = 2;
     animar();
     setTimeout(function () {
         cargarPartida();
     }, 1000);
-    modoJuego = 2;
     document.getElementById("textoModoJuego").innerHTML = 'Jugador contra la máquina. Modo difícil <i class="fas fa-fire-alt"></i>';
+    //document.getElementById("modoJuego").innerHTML = modoDeJuego;
 });
 
 function reiniciar() {
     window.location.reload();
     window.scrollTo(0, 0); //recarga la página y hace scroll a la parte de arriba
 }
-
 document.querySelector("#reiniciar").addEventListener("click", function () {
     reiniciar();
 });
-
-
 
 function ponerFicha(event) {
     let botonPulsado = event.target;
@@ -92,32 +90,40 @@ function ponerFicha(event) {
         /*Comprobamos que la partida no ha acabado y que el botón no tiene ningún texto*/
         botonPulsado.innerHTML = fichas[turno];
         puestas += 1; /*Cuando pulsamos un botón el contador de "puestas" sube 1*/
-
         let estadoPartida = estado(); /*0 si nadie ha ganado, 1 si gana el jugador, -1 si gana la máquina*/
         if (estadoPartida == 0) {
             /*Si nadie ha ganado...*/
             cambiarTurno();
             if (puestas < 9) {
-                /*Si no se ha llenado el tablero*/
-                iaFacil(); /*Llamamos a la función de que la ia(máquina) mueva*/
-                /*OJO AQUÍ ELEGIREMOS iaFacil O iaDificil EN FUNCIÓN DEL MODO QUE ELIJAMOS
-                AL PRINCIPIO*/
-                estadoPartida = estado();
-                puestas += 1;
-                cambiarTurno();
+                document.getElementById("modoJuego").innerHTML ==  modoDeJuego;
+                if (modoDeJuego === 0) {
+                    playerVsPlayer();
+                    estadoPartida = estado();
+                    puestas += 1;
+                    cambiarTurno();
+                } else if (modoDeJuego === 1) {
+                    iaFacil();
+                    estadoPartida = estado();
+                    puestas += 1;
+                    cambiarTurno();
+                } else if (modoDeJuego === 2) {
+                    iaDificil();
+                    estadoPartida = estado();
+                    puestas += 1;
+                    cambiarTurno();
+                }
+            } else if (puestas = 9 && estadoPartida == 0) {
+                /*Si no quedan movimientos y no hay un ganador, hay un empate*/
+                textoVictoria.innerHTML = '<i class="far fa-laugh-squint"></i> ¡Empate! <i class="fas fa-skull-crossbones"></i>';
+                partidaAcabada = true;
+                textoVictoria.style.visibility = "visible";
             }
         }
-
         if (estadoPartida == 1) {
             textoVictoria.style.visibility = "visible";
             partidaAcabada = true;
         } else if (estadoPartida == -1) {
             textoVictoria.innerHTML = '<i class="far fa-laugh-squint"></i> ¡Has perdido, lamer! <i class="fas fa-skull-crossbones"></i>';
-            partidaAcabada = true;
-            textoVictoria.style.visibility = "visible";
-        } else if (estadoPartida == 0) {
-            /*Si no quedan movimientos y no hay un ganador, hay un empate*/
-            textoVictoria.innerHTML = '<i class="far fa-laugh-squint"></i> ¡Empate! <i class="fas fa-skull-crossbones"></i>';
             partidaAcabada = true;
             textoVictoria.style.visibility = "visible";
         }
@@ -135,13 +141,12 @@ function cambiarTurno() {
 
 function estado() {
     posicionVictoria = 0;
-    nEstado = 0;
+    let nEstado = 0;
 
     function sonIguales(...args) {
         valores = args.map(x => x.innerHTML);
         if (valores[0] != "" && valores.every((x, i, arr) => x === arr[0])) {
-            /*Aquí comprobamos que los botones tienen el mismo valor SALVO "" */
-            args.forEach(x => x.style.backgroundColor = "lightgreen");
+            args.forEach(x => x.style.backgroundColor = "lightgreen")
             return true;
         } else {
             return false;
@@ -169,23 +174,25 @@ function estado() {
         posicionVictoria = 8;
     }
 
-    /*Comprobamos quien ha ganado*/
+    //Comprobamos quien ha ganado
     if (posicionVictoria > 0) {
         if (turno == 1) {
-            nEstado = 1; /*Gana el jugador*/
+            nEstado = 1;
         } else {
-            nEstado = -1; /*Gana la máquina*/
+            nEstado = -1;
         }
     }
     return nEstado;
 }
 
-/*
+
 function playerVsPlayer() {
     //Función player vs player
-}*/
+    /* document.getElementById("modoJuego").innerHTML = "He entrado en la función playerVsPlayer"; */
+}
 
 function iaFacil() {
+    /* document.getElementById("modoJuego").innerHTML = "He entrado en la función iaFacil"; */
     /*Función aleatorio para el modo fácil*/
     function aleatorio(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -203,8 +210,9 @@ function iaFacil() {
     return pos;
 }
 
-/*
+
 function iaDificil() {
+    /* document.getElementById("modoJuego").innerHTML = "He entrado en la función iaDificil"; */
     function aleatorio(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
@@ -224,4 +232,4 @@ function iaDificil() {
     }
     botones[pos].innerHTML = "O";
     return pos;
-}*/
+}
