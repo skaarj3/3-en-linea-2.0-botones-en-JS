@@ -39,16 +39,6 @@ function cargarPartida() {
     document.getElementById("facilDificil").style.visibility = "hidden";
 } //Esta función muestra el cuadro de juego y oculta los botones superiores
 
-function asignarModoJuego() {
-    if (document.getElementById("pvp").onclick) {
-        modoJuego = 0;
-    } else if (document.getElementById("botonPveFacil").onclick) {
-        modoJuego = 1;
-    } else if (document.getElementById("botonPveDificil").onclick) {
-        modoJuego = 2;
-    }
-}
-
 function animar() {
     document.getElementById("progress").style.visibility = "visible";
     document.getElementById("barra").classList.toggle("final");
@@ -63,7 +53,7 @@ document.querySelector("#pvp").addEventListener("click", function () {
     setTimeout(function () {
         cargarPartida();
     }, 1000);
-    asignarModoJuego();
+    modoJuego = 0;
     document.getElementById("textoModoJuego").innerHTML = 'Jugador contra Jugador <i class="fas fa-people-arrows"></i>';
 });
 
@@ -72,7 +62,7 @@ document.querySelector("#botonPveFacil").addEventListener("click", function () {
     setTimeout(function () {
         cargarPartida();
     }, 1000);
-    asignarModoJuego();
+    modoJuego = 1;
     document.getElementById("textoModoJuego").innerHTML = 'Jugador contra la máquina. Modo fácil <i class="fas fa-shapes"></i>';
 });
 
@@ -81,7 +71,7 @@ document.querySelector("#botonPveDificil").addEventListener("click", function ()
     setTimeout(function () {
         cargarPartida();
     }, 1000);
-    asignarModoJuego();
+    modoJuego = 2;
     document.getElementById("textoModoJuego").innerHTML = 'Jugador contra la máquina. Modo difícil <i class="fas fa-fire-alt"></i>';
 });
 
