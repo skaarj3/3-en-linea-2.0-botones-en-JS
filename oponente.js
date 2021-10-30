@@ -222,21 +222,30 @@ function iaDificil() {
     //Si está el centro libre, a por él
     if (valores[4] == "") {
         pos = 4;
-    } else if ((sonIguales(botones[1], botones[2])) || (sonIguales(botones[3], botones[6])) || (sonIguales(botones[4], botones[8]))) {
+        //Si el centro está ocupado, la máquina va a por las esquinas
+    } else if (valores[0] == "") {
         pos = 0;
-    } else if ((sonIguales(botones[0], botones[2])) || (sonIguales(botones[4], botones[7]))) {
-        pos = 1;
-    } else if ((sonIguales(botones[0], botones[1])) || (sonIguales(botones[5], botones[8])) || (sonIguales(botones[4], botones[6]))) {
+    } else if (valores[2] == "") {
         pos = 2;
-    } else if ((sonIguales(botones[4], botones[5])) || (sonIguales(botones[0], botones[6]))) {
-        pos = 3;
-    } else if ((sonIguales(botones[3], botones[4])) || (sonIguales(botones[2], botones[8]))) {
-        pos = 5;
-    } else if ((sonIguales(botones[7], botones[8])) || (sonIguales(botones[0], botones[3])) || (sonIguales(botones[2], botones[4]))) {
+    } else if (valores[6] == "") {
         pos = 6;
-    } else if ((sonIguales(botones[6], botones[8])) || (sonIguales(botones[1], botones[4]))) {
+    } else if (valores[8] == "") {
+        pos = 8;
+    } else if (((sonIguales(botones[1], botones[2]) && botones[1] !== "") || (sonIguales(botones[3], botones[6]) && botones[3] !== "") || (sonIguales(botones[4], botones[8]) && botones[4] !== "")) && valores[0] == "") {
+        pos = 0;
+    } else if (((sonIguales(botones[0], botones[2]) && botones[0] !== "") || (sonIguales(botones[4], botones[7]) && botones[4] !== "")) && valores[1] == "") {
+        pos = 1;
+    } else if (((sonIguales(botones[0], botones[1]) && botones[0] !== "") || (sonIguales(botones[5], botones[8]) && botones[5] !== "") || (sonIguales(botones[4], botones[6]) && botones[4] !== "")) && valores[2] == "") {
+        pos = 2;
+    } else if (((sonIguales(botones[4], botones[5]) && botones[4] !== "") || (sonIguales(botones[0], botones[6]) && botones[0] !== "")) && valores[3] == "") {
+        pos = 3;
+    } else if (((sonIguales(botones[3], botones[4]) && botones[3] !== "") || (sonIguales(botones[2], botones[8]) && botones[2] !== "")) && valores[5] == "") {
+        pos = 5;
+    } else if (((sonIguales(botones[7], botones[8]) && botones[7] !== "") || (sonIguales(botones[0], botones[3]) && botones[0] !== "") || (sonIguales(botones[2], botones[4]) && botones[2] !== "")) && valores[6] == "") {
+        pos = 6;
+    } else if (((sonIguales(botones[6], botones[8]) && botones[6] !== "") || (sonIguales(botones[1], botones[4]) && botones[1] !== "")) && valores[7] == "") {
         pos = 7;
-    } else if ((sonIguales(botones[6], botones[7])) || (sonIguales(botones[2], botones[5])) || (sonIguales(botones[0], botones[4]))) {
+    } else if (((sonIguales(botones[6], botones[7]) && botones[6] !== "") || (sonIguales(botones[2], botones[5]) && botones[2] !== "") || (sonIguales(botones[0], botones[4]) && botones[0] !== "")) && valores[8] == "") {
         pos = 8;
     } else { //Si el centro está pillado y nadie puede hacer 3 en raya en la siguiente jugada, genera una posición aleatoria
         let n = aleatorio(0, botones.length - 1);
